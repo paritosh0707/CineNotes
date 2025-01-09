@@ -3,7 +3,6 @@ import os
 import sys
 from datetime import datetime
 from from_root import from_root
-from cine_notes.exception import CineNotesException
 
 """
 Logger configuration module for CineNotes application.
@@ -36,6 +35,7 @@ try:
     )
 
 except Exception as e:
+    from cine_notes.exception import CineNotesException
     raise CineNotesException(
         "Failed to initialize logging configuration",
         sys
