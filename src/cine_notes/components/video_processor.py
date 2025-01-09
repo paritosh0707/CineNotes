@@ -88,7 +88,7 @@ class VideoProcessor:
             logging.info("Fetched video metadata successfully")
             
             # Save metadata
-            self.artifacts_saver.save_artifact("metadata.json", metadata)
+            self.artifacts_saver.save_json("metadata.json", metadata)
             
             # Extract video title and sanitize it
             video_title = self._sanitize_filename(metadata.get("title", "video"))
@@ -147,7 +147,7 @@ class VideoProcessor:
             logging.info(f"Converted {self.video_filename} to {self.audio_path}")
             
             # Save audio path
-            self.artifacts_saver.save_artifact("audio_path.txt", self.audio_path)
+            # self.artifacts_saver.save_artifact("audio_path.txt", self.audio_path)
             
             return self.audio_path
         except Exception as e:
@@ -186,7 +186,7 @@ class VideoProcessor:
             logging.info("Frame extraction completed successfully")
             
             # Save frames directory
-            self.artifacts_saver.save_artifact("frames_dir.txt", self.frames_dir)
+            # self.artifacts_saver.save_artifact("frames_dir.txt", self.frames_dir)
             
             return self.frames_dir
         except ValueError as ve:

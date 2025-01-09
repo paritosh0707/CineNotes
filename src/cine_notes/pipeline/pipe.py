@@ -6,6 +6,9 @@ from cine_notes.logger import logging
 from cine_notes.exception import CineNotesException
 import sys
 
+from dotenv import load_dotenv
+load_dotenv()
+
 try:
     video_processor = VideoProcessor(
         youtube_url="https://www.youtube.com/watch?v=qhomKbL-mHw",
@@ -16,9 +19,8 @@ try:
     video_processor.download_video()
 
     response = HuggingFaceWhisperAPI().query(video_processor.extract_audio())
-    artifacts_saver = ArtifactsSaver()
-    artifacts_saver.save_json(response, "response.json")
-    logging.info(f"Response saved to json file: {artifacts_saver.get_run_dir}")
-
+    logging.info(f"Transcription response status: {response['status']}\nlength of transcript: {response['word_count']} words")
+    print(f"Transcription response status: {response['status']}\nlength of transcript: {response['word_count']} words")
+    
 except Exception as e:
     raise CineNotesException(f"Failed to execute the pipeline\nDetailed error:\n{e}", sys)
