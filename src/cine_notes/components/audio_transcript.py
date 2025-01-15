@@ -86,10 +86,12 @@ class HuggingFaceWhisperAPI:
 
         Args:
             filename (str): Path to the audio file to process.
+            
             **kwargs: Optional parameters for customization:
-                - output_file (str): Base name for the output file (default is "output"). The extension is automatically added.
-                - file_type (str): Type of the output file ("text", "json", or "binary"). Default is "json".
-                - split_time_min (int): Duration in minutes to split the audio into chunks (default is 5 minutes).
+
+                output_file (str): Base name for the output file (default is "output"). The extension is automatically added.
+                file_type (str): Type of the output file ("text", "json", or "binary"). Default is "json".
+                split_time_min (int): Duration in minutes to split the audio into chunks (default is 5 minutes).
 
         Returns:
             Dict[str, Any]: A dictionary containing the transcription results, including combined text and any errors.
